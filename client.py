@@ -16,9 +16,3 @@ short_squeeze = reddit.subreddit("Shortsqueeze")
 for post in short_squeeze.new(limit=25):
     print(post.title)
 
-
-#  Check for capitalizations
-#  Check for money $XCUR
-
-
-#  Dictionary
