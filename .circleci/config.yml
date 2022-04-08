@@ -9,15 +9,15 @@ jobs:
       - image: cimg/python:3.10.1
     steps:
       - checkout
-      # - restore_cache:
-      #     key: deps2-{{ checksum "requirements/dev.txt" }}
+      - restore_cache:
+          key: deps2-{{ checksum "requirements.txt" }}
       - run:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r requirements/dev.txt
+            pip install -r requirements.txt
       - save_cache:
-          key: deps2-{{ checksum "requirements/dev.txt" }}
+          key: deps2-{{ checksum "requirements.txt" }}
           paths:
             - 'venv'
       - run:
