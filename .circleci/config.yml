@@ -9,8 +9,8 @@ jobs:
       - image: cimg/python:3.10.1
     steps:
       - checkout
-      - restore_cache:
-          key: deps2-{{ checksum "requirements/dev.txt" }}
+      # - restore_cache:
+      #     key: deps2-{{ checksum "requirements/dev.txt" }}
       - run:
           command: |
             python3 -m venv venv
