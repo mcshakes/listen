@@ -6,16 +6,14 @@ orbs:
 jobs:
   build-and-test:
     docker:
-      - image: cimg/python:3.9
+      - image: cimg/python:3.10.1
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
-      - python/install-packages:
-          pip-dependency-file: dev-requirements.txt
-          pkg-manager: pip
       - run:
-          name: Run tests
+          name: install dependencies
+          command: pip install -r requirements.txt
+      - run:
+          name: run tests
           command: python -m pytest
 
 workflows:
