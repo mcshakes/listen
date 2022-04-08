@@ -1,11 +1,8 @@
 version: 2.1
-orbs:
-  python: circleci/python@1.4.0
 
-workflows:
-  sample:
-    jobs:
-      - build-and-test
+orbs:
+  python: circleci/python@2.0.3
+
 jobs:
   build-and-test:
     docker:
@@ -14,6 +11,14 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: dev-requirements.txt
+          pkg-manager: pip
       - run:
           name: Run tests
           command: python -m pytest
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
